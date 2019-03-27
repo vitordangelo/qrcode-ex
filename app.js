@@ -1,22 +1,17 @@
 const QRCode = require('qrcode')
- 
-// QRCode.toDataURL('I am a pony!', function (err, url) {
-//   console.log(url)
-// })
+const vCardsJS = require('vcards-js')
 
-const card = `
-  BEGIN:VCARD
-  VERSION:4.0
-  N:Gump;Forrest;;Mr.;
-  FN:Forrest Gump
-  ORG:Bubba Gump Shrimp Co.
-  TITLE:Shrimp Man
-  TEL;TYPE=work,voice;VALUE=uri:tel:+1-111-555-1212
-  EMAIL:forrestgump@example.com
-  REV:20080424T195243Z
-  x-qq:21588891
-  END:VCARD
-`
+const vCard = vCardsJS();
+ 
+vCard.firstName = 'Vitor Ivan';
+vCard.lastName = 'DAngelo';
+vCard.organization = 'V2Tech Soluções';
+vCard.workPhone = '35998212157';
+vCard.url = 'https://vitordangelo.dev';
+vCard.note = 'ID do TheVIPS' 
+vCard.email = 'metroid.p2p@gmail.com';
+
+const card = vCard.getFormattedString()
 
 const generateQR = async text => {
   try {
